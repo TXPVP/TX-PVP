@@ -2,6 +2,15 @@ $(() => {
     let isCamOpen = false
     let isDroneOpen = false
     let cameraCount = 0
+    let loadouts = {
+        "DEA": [{ name: "shit", displayName: "trash" }, { name: "gsd", displayName: "dogAss" }],
+        "NARCO": []
+    }
+    let routes = new Map()
+    routes.set("spawnPointChooser", ({ target }) => {
+            const pickedLoadout = $(`.loadoutSelect`).val();
+            console.log(pickedLoadout)
+        })
         // listen for nui messages
     window.addEventListener('message', (event) => {
         if (event.data.type === 'cameraVisible') {
@@ -41,6 +50,23 @@ $(() => {
                 $(".statusImg").attr("src", "img/health_low.png")
             }
         }
+
+        if (event.data.type === "chooseTeam") {
+            $(".chooseTeam").show()
+        }
     });
-    // cunt
+    $(".teamBtn").click(({ target }) => {
+        const chosen = $(target).attr("team") // get custom team attribute
+        $(".loadoutSelect").empty()
+        loadouts[chosen].forEach((ld) => {
+            $(".loadoutSelect").append(`<option value=${ld.name}>${ld.displayName}</option>`) // build selector box
+        })
+        $(".loadout").show()
+    })
+
+    $(".proceed").click((event) => {
+            const destination = $(event.target).attr("to")
+            routes.get(destination)(event)
+        })
+        // cunt
 })

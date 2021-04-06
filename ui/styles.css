@@ -65,3 +65,44 @@
     width: 150px;
     height: 150px;
 }
+
+.chooseHd {
+    font-family: arial;
+    text-align: center;
+    color: #E1E1DE;
+}
+
+.chooseTeam {
+    border-radius: 5px;
+    background-color: #125F96;
+    width: 50%;
+    height: 50%;
+}
+
+.teamBtn {
+    background-color: #E32A27;
+    border: 1px solid #E32A27;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: arial;
+    color: ivory
+}
+
+.teamBtn:hover {
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.proceed {
+    background-color: #E32A27;
+    border: 1px solid #E32A27;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: arial;
+    color: ivory
+}
+
+.proceed:hover {
+    cursor: pointer;
+    border: 1px solid black;
+}
