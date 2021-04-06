@@ -2,6 +2,7 @@ $(() => {
     let isCamOpen = false
     let isDroneOpen = false
     let cameraCount = 0
+    let pickedTeam
     let loadouts = {
         "DEA": [{ name: "shit", displayName: "trash" }, { name: "gsd", displayName: "dogAss" }],
         "NARCO": []
@@ -9,7 +10,7 @@ $(() => {
     let routes = new Map()
     routes.set("spawnPointChooser", ({ target }) => {
             const pickedLoadout = $(`.loadoutSelect`).val();
-            console.log(pickedLoadout)
+            const data = { team: pickedTeam, loadout: pickedLoadout }
         })
         // listen for nui messages
     window.addEventListener('message', (event) => {
@@ -57,6 +58,7 @@ $(() => {
     });
     $(".teamBtn").click(({ target }) => {
         const chosen = $(target).attr("team") // get custom team attribute
+        pickedTeam = chosen
         $(".loadoutSelect").empty()
         loadouts[chosen].forEach((ld) => {
             $(".loadoutSelect").append(`<option value=${ld.name}>${ld.displayName}</option>`) // build selector box
